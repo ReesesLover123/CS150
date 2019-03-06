@@ -1,0 +1,94 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	int i = 20;
+	int droneX = 0;
+	int droneY = 0;
+	int refugeeX, refugeeY;
+	bool validInput; 
+	cout << "In order to dispatch a rescue drone, we need your X and Y coordinates separated by a space." << endl;
+	cin >> refugeeX >> refugeeY;
+
+	if ((refugeeX > 10) || (refugeeY > 10)) {
+		cout << "You need to input your coordinates, not letters!" << endl;
+		validInput = false; 
+		while (!validInput) {
+			cout << "In order to dispatch a rescue drone, we need your X and Y coordinates..." << endl;
+			cin >> refugeeX >> refugeeY;
+		}
+	}
+	cout << "Great. Sending a rescue drone immediately!" << endl;
+	system("cls");
+
+	while (i != 0)
+	{
+		char direction;
+		cout << "Which direction would you like to go?" << endl << "Remaining battery level = %" << i * 5 << endl;
+		cin >> direction;
+		switch (direction) {
+		case 'w':
+		case 'W':
+
+			if (droneX == 10) {
+				system("cls");
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")";
+				i++;
+				break;
+			}
+			system("cls");
+			droneX++;
+			cout << "You are now at (" << droneX << "," << droneY << ")";
+			break;
+		case 'a':
+		case 'A':
+			if (droneY == 0) {
+				system("cls");
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")";
+				i++;
+				break;
+			}
+			system("cls");
+			droneY--;
+			cout << "You are now at (" << droneX << "," << droneY << ")";
+			break;
+		case 's':
+		case 'S':
+			if (droneX == 0) {
+				system("cls");
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")";
+				i++;
+				break;
+			}
+			system("cls");
+			droneX--;
+			cout << "You are now at (" << droneX << "," << droneY << ")";
+			break;
+		case 'd':
+		case 'D':
+			if (droneY == 10) {
+				system("cls");
+				i++;
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")";
+				break;
+			}
+			system("cls");
+			droneY++;
+			cout << "You are now at (" << droneX << "," << droneY << ")";
+			break;
+		default: 
+			system("cls");
+			cout << "I know you're stressed, but I need a valid command. Please try again." << endl;
+				i++;
+
+		}
+		i--;
+		
+
+
+	}
+		return 0;
+}
+
