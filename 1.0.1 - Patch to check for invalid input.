@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    char pwp; 
+    cin >> pwp;
+    int sheep = (int)pwp;
+    if ((sheep > 57)||(sheep < 47))
+    cout << "It's a letter!";
+    else 
+    cout << "It's probably a number!";
+
+    return 0;
+}
