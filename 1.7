@@ -1,0 +1,112 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int energy = 20;
+	int droneX = 0;
+	int droneY = 0;
+	int refugeeX, refugeeY;
+
+	bool validInput;
+
+
+	cout << "In order to dispatch a rescue drone, we need your X and Y coordinates separated by a space." << endl;
+	cin >> refugeeX >> refugeeY;
+
+
+	if ((refugeeX >= 11) || (refugeeY >= 11)) {
+		validInput = false;
+		while (!validInput) {
+			cout << "You're out of range! Please try again or close the program." << endl << "We need your X and Y coordinates separated by a space." << endl;
+			cin >> refugeeX >> refugeeY;
+			if ((refugeeX <= 10) && (refugeeY <= 10))
+				validInput = true;
+		}
+	}
+
+
+	cout << "Great. Sending a rescue drone immediately!" << endl;
+
+	system("cls");
+	cout << "You are now at (0, 0).";
+
+
+	while (energy != 0)
+	{
+		int stepsRemaining = (abs(refugeeX - droneX) + abs(refugeeY - droneY));
+		char direction;
+
+		if (stepsRemaining == 0) {
+			cout << "rescue successful!" << endl;
+			system("pause");
+			break;
+		}
+
+		cout << "Which direction would you like to go? Steps remaining = " <<
+			stepsRemaining << endl << "Remaining battery level = %" << energy * 5 << endl;
+
+		cin >> direction;
+		switch (direction) {
+		case 'w':
+		case 'W':
+
+			if (droneX == 10) {
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")" << endl;
+				energy++;
+				break;
+			}
+			system("cls");
+			droneX++;
+			cout << "You are now at (" << droneX << "," << droneY << ")" << endl;
+			break;
+		case 'a':
+		case 'A':
+			if (droneY == 0) {
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")" << endl;
+				energy++;
+				break;
+			}
+			system("cls");
+			droneY--;
+			cout << "You are now at (" << droneX << "," << droneY << ")" << endl;
+			break;
+		case 's':
+		case 'S':
+			if (droneX == 0) {
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")" << endl;
+				energy++;
+				break;
+			}
+			system("cls");
+			droneX--;
+			cout << "You are now at (" << droneX << "," << droneY << ")" << endl;
+			break;
+		case 'd':
+		case 'D':
+			if (droneY == 10) {
+				energy++;
+				cout << "That's an illegal move, sir. You are now at (" << droneX << "," << droneY << ")" << endl;
+				break;
+			}
+			system("cls");
+			droneY++;
+			cout << "You are now at (" << droneX << "," << droneY << ")" << endl;
+			break;
+		default:
+			cout << "I know you're stressed, but I need a valid command. Please try again." << endl;
+			energy++;
+
+		}
+		
+		energy--;
+		
+	}
+
+	if (energy == 0) {
+		cout << endl << "If you're seeing this, then the rescue has failed! You're fired!" << endl;
+		system("pause");
+	}
+
+	return 0;
+}
