@@ -9,12 +9,26 @@ int main()
 	int refugeeX, refugeeY;
 
 	bool validInput;
-
-
 	cout << "In order to dispatch a rescue drone, we need your X and Y coordinates separated by a space." << endl;
 	cin >> refugeeX >> refugeeY;
+	
+	
+	
+/* Rough theory on input validation for Project 3. Not functional yet. 
+    int foo = (int)refugeeX;
+    int bar = (int)refugeeY;
+    if ((foo > 57)||(foo < 47))
+    cout << "It's a letter!";
+    if ((bar > 57)||(bar < 47))
+    cout << "It's a letter!";
+    //Could have triggered !validInput here. 
+   
+*/
 
 
+
+
+//input validation, only for integers. checks if it's within the 10x10 grid. 
 	if ((refugeeX >= 11) || (refugeeY >= 11)) {
 		validInput = false;
 		while (!validInput) {
@@ -29,6 +43,7 @@ int main()
 	cout << "Great. Sending a rescue drone immediately!" << endl;
 
 	system("cls");
+	
 	cout << "You are now at (0, 0).";
 
 
@@ -36,7 +51,6 @@ int main()
 	{
 		int stepsRemaining = (abs(refugeeX - droneX) + abs(refugeeY - droneY));
 		char direction;
-
 		if (stepsRemaining == 0) {
 			cout << "rescue successful!" << endl;
 			system("pause");
@@ -106,6 +120,7 @@ int main()
 	if (energy == 0) {
 		cout << endl << "If you're seeing this, then the rescue has failed! You're fired!" << endl;
 		system("pause");
+		return 0;
 	}
 
 	return 0;
