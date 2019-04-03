@@ -1,0 +1,48 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <iostream> 
+using namespace std;
+
+int main()
+{
+double probs[] = {0.75, 0.05, 0.05, 0.15} ;
+int PROBS_LENGTH = 4;
+
+for (int i = 0; i < 100; i++) {
+double sum = 0, choice; 
+choice = rand() / (RAND_MAX + 1.0); 
+for (int i = 0; i < PROBS_LENGTH; i++)
+{
+sum += probs[i];
+int suit = i + 1;
+if (choice < sum) {
+switch (suit){
+    case 1: 
+    cout << "spades!" << endl; 
+    break; 
+    case 2:
+    cout << "Diamonds!" << endl;
+    break; 
+    case 3:
+        cout << "hearts!" << endl;
+
+    break; 
+    case 4: 
+        cout << "clubs!" << endl;
+
+    break;
+}
+break;
+    }
+    }
+    //should never get here without choosing number
+}
+
+}
